@@ -89,7 +89,7 @@ public class EmployeeTree {
 		for (int z = 0; z < numberDash; z++) {
 			writer.write("-");
 		}
-		writer.write(e.name + " (" + e.title + ") " + e.title+ "\n");
+		writer.write(e.name + " (" + e.title + ") " + e.year+ "\n");
 		if (e.subodinary.size() > 0) {
 			
 			Collections.sort(e.subodinary, new Comparator<Employee>() {

@@ -50,19 +50,16 @@ public class EmployeeTree {
 						all.get(tokens[0]).boss = all.get(tokens[1]);
 						all.get(tokens[1]).subodinary.add(all.get(tokens[0]));
 					} else {
+						Employee boss = new Employee(tokens[1]);
 						if (tokens[1].equals("NULL")) {
 							ceo = tokens[0];
-
-							Employee boss = new Employee(tokens[1]);
 							boss.boss = null;
-							boss.subodinary.add(all.get(tokens[0]));
-							all.put(tokens[1], boss);
-						} else {
-							Employee boss = new Employee(tokens[1]);
+							
+						} else 
 							all.get(tokens[0]).boss = boss;
-							boss.subodinary.add(all.get(tokens[0]));
-							all.put(tokens[1], boss);
-						}
+						
+						boss.subodinary.add(all.get(tokens[0]));
+						all.put(tokens[1], boss);
 					}
 				}
 

@@ -37,24 +37,23 @@ public class FirstCommonAncestor {
 		int HeightDiff = 0;
 		if( height1 < height2 ) {
 			HeightDiff = height2 - height1;
-			for( int i = HeightDiff; i >= 0; i-- )
+			for( int i = HeightDiff; i > 0; i-- )
 				two = two.parent;
 		}			
 		else {
 			HeightDiff = height1 - height2;
-			for( int i = HeightDiff; i >= 0; i-- )
+			for( int i = HeightDiff; i > 0; i-- )
 				one = one.parent;
 		}
 		
-		while( one != two ) {
+		while( one != null && two != null ) {
+			if( one == two )
+				return one;
 			one = one.parent;
 			two = two.parent;
 		}
 		
-		if( one != null )
-			return one;
-		else
-			return null;
+		return null;
 	}
 	
 	public static TreeNode LCA(TreeNode root, TreeNode a, TreeNode b){

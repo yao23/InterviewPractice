@@ -41,6 +41,29 @@ public class FirstCommonAncestor {
 		return ( left != null ) ? left : right; 
 	}
 	
+	public static int CountNodes(TreeNode root, TreeNode a, TreeNode b) {
+		if( root == null )
+			return 0;
+		int LeftNum = CountNodes(root.left, a, b);
+		int RightNum = CountNodes(root.right, a, b);
+		if( root == a || root == b )
+			return 1 + LeftNum + RightNum;
+		else
+			return LeftNum + RightNum;			
+	}
+	
+	public static TreeNode LCA2(TreeNode root, TreeNode a, TreeNode b){
+		if(root == null) return root;
+		if(root == a || root == b)	return root;
+		int LeftNum = CountNodes(root.left, a, b);
+		if( LeftNum == 1 )
+			return root;
+		else if( LeftNum == 2 )
+			return LCA2(root.left, a, b);
+		else // LeftNum == 0
+			return LCA2(root.right, a, b); 
+	}
+	
 	public static void main(String[] args) {
 		TreeNode A = new TreeNode('A');
 		TreeNode B = new TreeNode('B');
@@ -60,6 +83,15 @@ public class FirstCommonAncestor {
 		System.out.println("First Common Ancestor of C and G is: " + res2.c);
 		System.out.println("First Common Ancestor of C and C is: " + res3.c);
 		System.out.println("First Common Ancestor of B and A is: " + res4.c);
+		
+		TreeNode res2_1 = LCA2(A, D, F);
+		TreeNode res2_2 = LCA2(A, C, G);
+		TreeNode res2_3 = LCA2(A, C, C);
+		TreeNode res2_4 = LCA2(A, B, A);
+		System.out.println("Top Down First Common Ancestor of D and F is: " + res2_1.c);
+		System.out.println("Top Down First Common Ancestor of C and G is: " + res2_2.c);
+		System.out.println("Top Down First Common Ancestor of C and C is: " + res2_3.c);
+		System.out.println("Top Down First Common Ancestor of B and A is: " + res2_4.c);
 	}
 }
  

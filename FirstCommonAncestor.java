@@ -26,9 +26,14 @@ public class FirstCommonAncestor {
 	}
 	
 	private static int CountHeight(Node root) {
-		if( root == null )
-			return 0;
-		return 1 + CountHeight(root.parent);
+		int height = 0;
+		
+		while( root != null ) {
+			height++;
+			root = root.parent;
+		}
+			
+		return height;
 	}
 	
 	public static Node commonAncestor2(Node one, Node two) {

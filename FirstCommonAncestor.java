@@ -118,11 +118,11 @@ class Node {
 	Node right;
  
 	public Node(char c) {
-    	this.c = c;
+    		this.c = c;
 	}
  
 	boolean isRoot() {
-    	return parent == this;
+    		return parent == this;
 	}
 }
 
@@ -133,7 +133,7 @@ class TreeNode {
 	TreeNode right;
  
 	public TreeNode(char c) {
-    	this.c = c;
+	    	this.c = c;
 	}
  
 }

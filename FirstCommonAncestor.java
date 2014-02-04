@@ -25,6 +25,38 @@ public class FirstCommonAncestor {
 		return null;
 	}
 	
+	private static int CountHeight(Node root) {
+		if( root == null )
+			return 0;
+		return 1 + CountHeight(root.parent);
+	}
+	
+	public static Node commonAncestor2(Node one, Node two) {
+		int height1 = CountHeight(one);
+		int height2 = CountHeight(two);
+		int HeightDiff = 0;
+		if( height1 < height2 ) {
+			HeightDiff = height2 - height1;
+			for( int i = HeightDiff; i >= 0; i-- )
+				two = two.parent;
+		}			
+		else {
+			HeightDiff = height1 - height2;
+			for( int i = HeightDiff; i >= 0; i-- )
+				one = one.parent;
+		}
+		
+		while( one != two ) {
+			one = one.parent;
+			two = two.parent;
+		}
+		
+		if( one != null )
+			return one;
+		else
+			return null;
+	}
+	
 	public static TreeNode LCA(TreeNode root, TreeNode a, TreeNode b){
 		TreeNode left = null, right = null;
 		if(root == null) return root;
@@ -118,11 +150,11 @@ class Node {
 	Node right;
  
 	public Node(char c) {
-    		this.c = c;
+    	this.c = c;
 	}
  
 	boolean isRoot() {
-    		return parent == this;
+    	return parent == this;
 	}
 }
 
@@ -133,7 +165,7 @@ class TreeNode {
 	TreeNode right;
  
 	public TreeNode(char c) {
-	    	this.c = c;
+    	this.c = c;
 	}
  
 }

@@ -143,6 +143,26 @@ public class FirstCommonAncestor {
 		System.out.println("With parent pointer, First Common Ancestor of C and G is: " + res3_2.c);
 		System.out.println("With parent pointer, First Common Ancestor of C and C is: " + res3_3.c);
 		System.out.println("With parent pointer, First Common Ancestor of B and A is: " + res3_4.c);
+		
+		Node A3 = new Node('A');
+		Node B3 = new Node('B');
+		Node C3 = new Node('C');
+		Node D3 = new Node('D');
+		Node E3 = new Node('E');
+		Node G3 = new Node('F');
+		Node F3 = new Node('G');
+		A3.left = B3; A3.right = C3; A3.parent = null;
+		B3.left = D3; B3.right = F3; B3.parent = A3; C3.parent = A3;
+		D3.left = G3; D3.right = E3; D3.parent = B3; E3.parent = D3;
+		F3.parent = B3; G3.parent = D3;
+		Node res4_1 = commonAncestor(D3, F3);
+		Node res4_2 = commonAncestor(C3, G3);
+		Node res4_3 = commonAncestor(C3, C3);
+		Node res4_4 = commonAncestor(B3, A3);
+		System.out.println("With parent pointer, First Common Ancestor of D and F is: " + res4_1.c);
+		System.out.println("With parent pointer, First Common Ancestor of C and G is: " + res4_2.c);
+		System.out.println("With parent pointer, First Common Ancestor of C and C is: " + res4_3.c);
+		System.out.println("With parent pointer, First Common Ancestor of B and A is: " + res4_4.c);
 	}
 }
  

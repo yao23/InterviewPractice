@@ -53,7 +53,8 @@ public class FirstCommonAncestor {
 	}
 	
 	public static TreeNode LCA2(TreeNode root, TreeNode a, TreeNode b){
-		if(root == null) return root;
+		if(root == null || a == null || b == null ) 
+			return null;
 		if(root == a || root == b)	return root;
 		int LeftNum = CountNodes(root.left, a, b);
 		if( LeftNum == 1 )
